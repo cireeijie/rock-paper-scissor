@@ -1,0 +1,124 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Rock Paper Scissors</title>
+        <link rel="stylesheet" href="assets/css/main.css">
+        <script src="https://kit.fontawesome.com/8876338ff1.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <section id="page-1" class="scoreboard-section">
+            <div class="row">
+                <div class="container">
+                    <div class="intro">
+                        <img src="assets/images/waving-hand.png" alt="Waving">
+                        <div class="conversation-balloon">
+                            <p>
+                                Hi there! Let's play 
+                                <img src="assets/images/zany-face.png" alt="">
+                            </p>
+                        </div>
+                    </div>
+                    <div id="toPageTwo" class="toNext">
+                        <p class="play-btn">
+                            OKAY!
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="page-2">
+            <div class="row">
+                <div class="container">
+                    <div class="image">
+                        <img src="assets/images/win-2.png" alt="">
+                        <p id="emojiValidator">Let me know your name!</p>
+                    </div>
+                    <div class="content">
+                        <div class="input-item">
+                            <label for="name">Player name:</label>
+                            <input id="name" type="text">
+                        </div>
+                        <div class="enemy">
+                            <span>Select Enemy:</span>
+                            <div class="enemies">
+                                <label for="enemy"><input id="chatgpt" name="enemy" value="ChatGPT(stressed)" type="radio">ChatGPT(Stressed)</label>
+                                <label for="enemy"><input id="johnweak" name="enemy" value="John Weak" type="radio">John Weak(Insane)</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="proceed-btn">
+                        <button id="toGame">Proceed</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="page-3" class="game">
+            <div class="row">
+                <div class="game-board">
+                    <div class="container">
+                        <div class="player-section">
+                            <div class="selectors">
+                                <button id="rock" class="">Rock</button>
+                                <button id="paper"class="">Paper</button>
+                                <button id="scissor" class="">Scissor</button>
+                            </div>
+                            <div class="select-preview">
+                                <img id="selectPreview" src="assets/images/waving-hand.png" alt="">
+                                <div class="pReaction-container">
+                                    <div id="pReaction" class="reaction-bubble">
+                                        <p id="pTextReact">Wait! I'm picking...</p>
+                                        <img id="pReactEmoji" src="assets/images/zany-face.png" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="score-container">
+                                <div id="playerScore" class="player-score">
+                                    <p id="pScore">0</p>
+                                </div>
+                                <p id="pName" class="player-name">Player</p>
+                            </div>
+                        </div>
+                        <div class="divider">
+                            <div class="vertical-line">
+                                <span class="vertical"></span>
+                            </div>
+                        </div>
+                        <div class="computer-section">
+                            <div class="selectors">
+                                <button id="aiRock">Rock</button>
+                                <button id="aiPaper">Paper</button>
+                                <button id="aiScissor">Scissor</button>
+                            </div>
+                            <div id="computerSelect" class="computer-select">
+                                <img id="aiSelect" src="assets/images/waving-hand.png" alt="">
+                                <div class="aiReaction">
+                                    <div id="aiReaction" class="reaction-bubble">
+                                        <p id="aiTextReact">I'm ready! Pick now.</p>
+                                        <img id="aiReactEmoji" src="assets/images/zany-face.png" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="score-container">
+                                <div id="computerScore" class="computer-score">
+                                    <p id="cScore">0</p>
+                                </div>
+                                <p id="aiName" class="ai-name">Computer</p>
+                            </div>
+                        </div>
+                        <div class="to-home">
+                            <p id="toHome">
+                                I give up! Let's go back.
+                                <img src="assets/images/fearful-face.png" alt="">
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <script src="assets/js/main.js"></script>
+    </body>
+    </html>

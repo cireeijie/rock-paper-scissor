@@ -194,10 +194,13 @@
 .match-history {
     display: flex;
     align-items: center;
+    justify-content: center;
+    gap: 5px;
 }
 
 .player-history,
 .ai-history {
+    width: 40px;
     height: 500px;
     display: flex;
     flex-direction: column;

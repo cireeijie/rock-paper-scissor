@@ -21,6 +21,8 @@ const pReactEmoji = document.querySelector("#pReactEmoji");
 const aiReactEmoji = document.querySelector("#aiReactEmoji");
 const playerScore = document.querySelector("#pScore");
 const aiScore = document.querySelector("#cScore");
+const playerHistory = document.querySelector("#playerHistory");
+const aiHistory = document.querySelector("#aiHistory");
 
 const winReactionText = ["Yey! I won!", "Easy-Peasy!", "Give up now!"];
 const loseReactionText = ["Urgh!", "Ouch!", "Huhu!"];
@@ -133,13 +135,104 @@ function johnWeakWon() {
     aiScore.innerHTML = aiPoints;
 }
 
+function winHistory() {
+    const pHistory = document.createElement('div');
+    pHistory.classList.add('history-container');
+
+    const pResultIcon = document.createElement('i');
+    pResultIcon.classList.add('fa-solid');
+    pResultIcon.classList.add('fa-check');
+    pHistory.appendChild(pResultIcon);
+
+    const playerPicked = document.createElement('img');
+    playerPicked.src = previewSelection[playerChoose];
+    pHistory.appendChild(playerPicked);
+
+    playerHistory.prepend(pHistory);
+
+    const botHistory = document.createElement('div');
+    botHistory.classList.add('history-container');
+
+    const aiPicked = document.createElement('img');
+    aiPicked.src = previewSelection[aiChoose];
+    botHistory.appendChild(aiPicked);
+
+    const aiResultIcon = document.createElement('i');
+    aiResultIcon.classList.add('fa-solid');
+    aiResultIcon.classList.add('fa-xmark');
+    botHistory.appendChild(aiResultIcon);
+
+    aiHistory.prepend(botHistory);
+}
+
+function loseHistory() {
+    const pHistory = document.createElement('div');
+    pHistory.classList.add('history-container');
+
+    const pResultIcon = document.createElement('i');
+    pResultIcon.classList.add('fa-solid');
+    pResultIcon.classList.add('fa-xmark');
+    pHistory.appendChild(pResultIcon);
+
+    const playerPicked = document.createElement('img');
+    playerPicked.src = previewSelection[playerChoose];
+    pHistory.appendChild(playerPicked);
+
+    playerHistory.prepend(pHistory);
+
+    const botHistory = document.createElement('div');
+    botHistory.classList.add('history-container');
+
+    const aiPicked = document.createElement('img');
+    aiPicked.src = previewSelection[aiChoose];
+    botHistory.appendChild(aiPicked);
+
+    const aiResultIcon = document.createElement('i');
+    aiResultIcon.classList.add('fa-solid');
+    aiResultIcon.classList.add('fa-check');
+    botHistory.appendChild(aiResultIcon);
+
+    aiHistory.prepend(botHistory);
+}
+
+function drawHistory() {
+    const pHistory = document.createElement('div');
+    pHistory.classList.add('history-container');
+
+    const pResultIcon = document.createElement('i');
+    pResultIcon.classList.add('fa-solid');
+    pResultIcon.classList.add('fa-minus');
+    pHistory.appendChild(pResultIcon);
+
+    const playerPicked = document.createElement('img');
+    playerPicked.src = previewSelection[playerChoose];
+    pHistory.appendChild(playerPicked);
+
+    playerHistory.prepend(pHistory);
+
+    const botHistory = document.createElement('div');
+    botHistory.classList.add('history-container');
+
+    const aiPicked = document.createElement('img');
+    aiPicked.src = previewSelection[aiChoose];
+    botHistory.appendChild(aiPicked);
+
+    const aiResultIcon = document.createElement('i');
+    aiResultIcon.classList.add('fa-solid');
+    aiResultIcon.classList.add('fa-minus');
+    botHistory.appendChild(aiResultIcon);
+
+    aiHistory.prepend(botHistory);
+}
+
 function won() {
     playerPoints += 1;
     pReactText.innerHTML = winReactionText[aiRandom()];
     aiReactText.innerHTML = loseReactionText[aiRandom()];
     pReactEmoji.src = winReactEmoji[aiRandom()];
     aiReactEmoji.src = loseReactEmoji[aiRandom()];
-    playerScore.innerHTML = playerPoints;
+    playerScore.innerHTML = playerPoints; 
+    winHistory();
 }
 
 function lost() {
@@ -149,6 +242,7 @@ function lost() {
     pReactEmoji.src = loseReactEmoji[aiRandom()];
     aiReactEmoji.src = winReactEmoji[aiRandom()];
     aiScore.innerHTML = aiPoints;
+    loseHistory();
 }
 
 function draw() {
@@ -156,6 +250,7 @@ function draw() {
     aiReactText.innerHTML = drawReactionText[aiRandom()];
     pReactEmoji.src = winReactEmoji[2];
     aiReactEmoji.src = winReactEmoji[2];
+    drawHistory();
 }
 
 function checkResult() {

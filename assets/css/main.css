@@ -412,6 +412,10 @@
     animation: spin 1s ease-in-out;
 }
 
+.pop {
+    animation: pop 1s ease-in-out infinite;
+}
+
 /* Third Page End */
 
 /* Animations */

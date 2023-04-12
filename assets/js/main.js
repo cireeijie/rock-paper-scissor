@@ -89,25 +89,26 @@ function aiRandom() {
 
 function rockHover() {
     playerSelect.src = previewSelection[0];
-    playerSelect.classList.add('spin');
+    playerSelect.classList.add('pop');
     aiSelect.classList.remove('spin');
 }
 
 function paperHover() {
     playerSelect.src = previewSelection[1];
-    playerSelect.classList.add('spin');
+    playerSelect.classList.add('pop');
     aiSelect.classList.remove('spin');
 }
 
 function scissorHover() {
     playerSelect.src = previewSelection[2];
-    playerSelect.classList.add('spin');
+    playerSelect.classList.add('pop');
     aiSelect.classList.remove('spin');
 }
 
 function prevSelect() {
     playerSelect.src = previewSelection[playerChoose];
-    playerSelect.classList.remove('spin');
+    // aiSelect.classList.remove('spin');
+    playerSelect.classList.remove('pop');
 }
 
 function pickedRock() {
@@ -119,7 +120,6 @@ function pickedRock() {
 }
 
 function pickedPaper() {
-    playerSelect.classList.remove('spin');
     playerChoose = 1;
     rock.classList.remove("active");
     paper.classList.add("active");

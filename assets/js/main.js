@@ -23,6 +23,7 @@ const playerScore = document.querySelector("#pScore");
 const aiScore = document.querySelector("#cScore");
 const playerHistory = document.querySelector("#playerHistory");
 const aiHistory = document.querySelector("#aiHistory");
+const history = document.querySelector("#historyContainer");
 
 const winReactionText = ["Yey! I won!", "Easy-Peasy!", "Give up now!"];
 const loseReactionText = ["Urgh!", "Ouch!", "Huhu!"];
@@ -88,18 +89,25 @@ function aiRandom() {
 
 function rockHover() {
     playerSelect.src = previewSelection[0];
+    playerSelect.classList.add('spin');
+    aiSelect.classList.remove('spin');
 }
 
 function paperHover() {
     playerSelect.src = previewSelection[1];
+    playerSelect.classList.add('spin');
+    aiSelect.classList.remove('spin');
 }
 
 function scissorHover() {
     playerSelect.src = previewSelection[2];
+    playerSelect.classList.add('spin');
+    aiSelect.classList.remove('spin');
 }
 
 function prevSelect() {
     playerSelect.src = previewSelection[playerChoose];
+    playerSelect.classList.remove('spin');
 }
 
 function pickedRock() {
@@ -111,6 +119,7 @@ function pickedRock() {
 }
 
 function pickedPaper() {
+    playerSelect.classList.remove('spin');
     playerChoose = 1;
     rock.classList.remove("active");
     paper.classList.add("active");
@@ -138,6 +147,7 @@ function johnWeakWon() {
 function winHistory() {
     const pHistory = document.createElement('div');
     pHistory.classList.add('history-container');
+    pHistory.setAttribute('id', 'historyContainer');
 
     const pResultIcon = document.createElement('i');
     pResultIcon.classList.add('fa-solid');
@@ -152,6 +162,7 @@ function winHistory() {
 
     const botHistory = document.createElement('div');
     botHistory.classList.add('history-container');
+    botHistory.setAttribute('id', 'historyContainer');
 
     const aiPicked = document.createElement('img');
     aiPicked.src = previewSelection[aiChoose];
@@ -163,11 +174,13 @@ function winHistory() {
     botHistory.appendChild(aiResultIcon);
 
     aiHistory.prepend(botHistory);
+    historyOpacity();
 }
 
 function loseHistory() {
     const pHistory = document.createElement('div');
     pHistory.classList.add('history-container');
+    pHistory.setAttribute('id', 'historyContainer');
 
     const pResultIcon = document.createElement('i');
     pResultIcon.classList.add('fa-solid');
@@ -182,6 +195,7 @@ function loseHistory() {
 
     const botHistory = document.createElement('div');
     botHistory.classList.add('history-container');
+    botHistory.setAttribute('id', 'historyContainer');
 
     const aiPicked = document.createElement('img');
     aiPicked.src = previewSelection[aiChoose];
@@ -193,11 +207,13 @@ function loseHistory() {
     botHistory.appendChild(aiResultIcon);
 
     aiHistory.prepend(botHistory);
+    historyOpacity();
 }
 
 function drawHistory() {
     const pHistory = document.createElement('div');
     pHistory.classList.add('history-container');
+    pHistory.setAttribute('id', 'historyContainer');
 
     const pResultIcon = document.createElement('i');
     pResultIcon.classList.add('fa-solid');
@@ -212,6 +228,7 @@ function drawHistory() {
 
     const botHistory = document.createElement('div');
     botHistory.classList.add('history-container');
+    botHistory.setAttribute('id', 'historyContainer');
 
     const aiPicked = document.createElement('img');
     aiPicked.src = previewSelection[aiChoose];
@@ -223,6 +240,26 @@ function drawHistory() {
     botHistory.appendChild(aiResultIcon);
 
     aiHistory.prepend(botHistory);
+    historyOpacity();
+}
+
+function historyOpacity() {
+    let playerHistoryChild = playerHistory.childNodes;
+    let aiHistoryChild = aiHistory.childNodes;
+    let len = playerHistory.childNodes.length;
+
+    for(let i = 0 ; i < len ; i++) {
+        if(i == 0) {
+            playerHistoryChild[i].classList.add('scale');
+            aiHistoryChild[i].classList.add('scale');
+        }
+        else {
+            playerHistoryChild[i].classList.remove('scale');
+            playerHistoryChild[i].classList.add('opacity');
+            aiHistoryChild[i].classList.remove('scale');
+            aiHistoryChild[i].classList.add('opacity');
+        }
+    }
 }
 
 function won() {
@@ -256,6 +293,7 @@ function draw() {
 function checkResult() {
     aiChoose = aiRandom();
     aiSelect.src = previewSelection[aiChoose];
+    aiSelect.classList.add('spin');
 
     if(playerChoose == aiChoose) {
         draw();
@@ -277,6 +315,7 @@ function checkResult() {
 function johnWeakGod() {
     aiChoose = aiRandom();
     aiSelect.src = johnWeakWeapons[aiChoose];
+    aiSelect.classList.add('spin');
 
     if(playerChoose == aiChoose) {
         lost();
@@ -314,3 +353,4 @@ function toHomePage() {
     pReactEmoji.src = 'assets/images/zany-face.png';
     aiReactEmoji.src = 'assets/images/zany-face.png';
 }
+

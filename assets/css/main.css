@@ -184,6 +184,12 @@
     z-index: 1;
 }
 
+.game-board {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
 #page-3 .container {
     width: 100%;
     display: flex;
@@ -193,9 +199,20 @@
 
 .match-history {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 5px;
+}
+
+.match-history .title {
+    color: white;
+    font-size: 12px;
+    padding: 10px 0;
+}
+
+.match-container {
+    display: flex;
 }
 
 .player-history,
@@ -238,7 +255,6 @@
 }
 
 .vertical-line {
-    height: 100vh;
     display: flex;
     align-items: center;
 }
@@ -320,6 +336,10 @@
     border-radius: 10px;
 }
 
+/* #selectPreview {
+    animation: spin 1s ease-in-out;
+} */
+
 .score-container {
     display: flex;
     flex-direction: column;
@@ -347,7 +367,7 @@
 
 .to-home {
     position: absolute;
-    bottom: 40px;
+    bottom: -100px;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -376,6 +396,22 @@
     color: #03C988 !important;
 }
 
+.opacity {
+    opacity: 0.5;
+}
+
+.scale {
+    transform: scale(1.1);
+}
+
+.zoom {
+    animation: zoom 1s ease-in-out;
+}
+
+.spin {
+    animation: spin 1s ease-in-out;
+}
+
 /* Third Page End */
 
 /* Animations */
@@ -396,9 +432,28 @@
     0% {
         scale: 0.5;
         opacity: 0;
+        height: 0;
     }
     100% {
+        height: auto;
         opacity: 1;
-        scale: 1;
+        height: 20px;
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotateY(0deg);
+        opacity: 0;
+    }
+    50% {
+        transform: rotateY(360deg);
+    }
+    75% {
+        transform: scale(1.2);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1);
     }
 }

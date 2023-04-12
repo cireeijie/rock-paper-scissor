@@ -262,6 +262,16 @@ function historyOpacity() {
     }
 }
 
+function clearHistory() {
+    let len = playerHistory.childNodes.length;
+    console.log(len);
+
+    for(let i = 0 ; i < len ; i++) {
+        playerHistory.removeChild(playerHistory.firstElementChild);
+        aiHistory.removeChild(aiHistory.firstElementChild);
+    }
+}
+
 function won() {
     playerPoints += 1;
     pReactText.innerHTML = winReactionText[aiRandom()];
@@ -352,5 +362,6 @@ function toHomePage() {
     aiReactText.innerHTML = "I'm ready! Pick now.";
     pReactEmoji.src = 'assets/images/zany-face.png';
     aiReactEmoji.src = 'assets/images/zany-face.png';
+    clearHistory();
 }
 
